@@ -1,4 +1,17 @@
 apiVersion: v1
+kind: Service
+metadata:
+  name: my-website-service
+  namespace: student-apps
+spec:
+  type: LoadBalancer 
+  selector:
+    app: my-website
+  ports:
+    - port: 80
+      targetPort: 80
+---
+apiVersion: v1
 kind: ConfigMap
 metadata:
   name: my-website-config
@@ -13,19 +26,6 @@ data:
       <p>Deployed via ArgoCD</p>
     </body>
     </html>
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: my-website-service
-  namespace: student-apps
-spec:
-  type: LoadBalancer  # Use NodePort if on bare metal/kind without LB
-  selector:
-    app: my-website
-  ports:
-    - port: 80
-      targetPort: 80
 ---
 apiVersion: apps/v1
 kind: Deployment
