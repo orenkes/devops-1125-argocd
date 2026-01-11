@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hooks-demo
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/<YOUR_GITHUB_USER>/<YOUR_REPO>.git
+    targetRevision: main
+    path: jobs
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: hooks
+
+  syncPolicy:
+    automated: {}
