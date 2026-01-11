@@ -1,0 +1,113 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: one
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: job
+          image: busybox
+          command:
+            - sh
+            - -c
+            - echo "job one"
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: two
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: job
+          image: busybox
+          command:
+            - sh
+            - -c
+            - echo "job two"
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: three
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: job
+          image: busybox
+          command:
+            - sh
+            - -c
+            - echo "job three"
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: four
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: job
+          image: busybox
+          command:
+            - sh
+            - -c
+            - echo "job four"
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: five
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/sync-wave: "3"
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: job
+          image: busybox
+          command:
+            - sh
+            - -c
+            - echo "job five"
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: six
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: job
+          image: busybox
+          command:
+            - sh
+            - -c
+            - echo "job six"
