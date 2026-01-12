@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/<YOUR_GITHUB_USER>/<YOUR_REPO>.git
     targetRevision: main
-    path: jobs
+    path: home-exercise/jobs
 
   destination:
     server: https://kubernetes.default.svc
