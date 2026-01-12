@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/<YOUR_GITHUB_USER>/<YOUR_REPO>.git
+    repoURL: https://github.com/orenkes/devops-1125-argocd.git
     targetRevision: main
     path: home-exercise/jobs
 
