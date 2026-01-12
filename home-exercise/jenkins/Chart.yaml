@@ -1,0 +1,6 @@
+apiVersion: v2
+name: jenkins
+description: Jenkins Automation Server
+type: application
+version: 5.8.6
+appVersion: "2.440.1"
